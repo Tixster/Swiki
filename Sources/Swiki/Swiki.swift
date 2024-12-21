@@ -1,2 +1,12 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+import Foundation
+
+@SwikiActor
+final class Api {
+
+    func handleMetohd() async throws {
+        try await SwikiActor.shared.submit {
+
+        }
+    }
+
+}
