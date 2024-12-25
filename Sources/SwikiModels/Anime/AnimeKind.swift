@@ -12,7 +12,7 @@ public enum SwikiAnimeKind: String, Codable, Sendable {
     /// Спецвыпуск
     case special
     /// TV-спецвыпуск
-    case tvSpecial
+    case tvSpecial = "tv_special"
     /// Клип
     case music
     /// Promotional Videos – Проморолик
@@ -20,24 +20,9 @@ public enum SwikiAnimeKind: String, Codable, Sendable {
     /// Commercial Messages – Реклама
     case cm
     /// Коротий TV-сериал – до 13 эпизодов
-    case tv13
+    case tv13 = "tv_13"
     /// Средний TV-сериал – до 24 эпизодов
-    case tv24
+    case tv24 = "tv_24"
     /// Длинный TV-сериал – больше 30 эпизодов
-    case tv48
-
-    enum CodingKeys: String, CodingKey {
-        case tv
-        case movie
-        case ova
-        case ona
-        case special
-        case tvSpecial = "tv_special"
-        case music
-        case pv
-        case cm
-        case tv13 = "tv_13"
-        case tv24 = "tv_24"
-        case tv48 = "tv_48"
-    }
+    case tv48 = "tv_48"
 }

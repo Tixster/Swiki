@@ -8,22 +8,11 @@ public enum SwikiAnimeRating: String, Codable, Sendable {
     /// PG - Children
     case pg
     /// PG-13 - Teens 13 or older
-    case pg13
+    case pg13 = "pg_13"
     /// R - 17+ recommended (violence & profanity)
     case r
     /// R+ - Mild Nudity (may also contain violence & profanity)
-    case rPlus
+    case rPlus = "r_plus"
     /// Rx - Hentai (extreme sexual content/nudity)
     case rx
-
-    enum CodingKeys: String, CodingKey {
-        case none
-        case g
-        case pg
-        case pg13 = "pg_13"
-        case r
-        case rPlus = "r_plus"
-        case rx
-    }
-
 }

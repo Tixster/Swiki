@@ -2,16 +2,9 @@ import Foundation
 
 public enum SwikiAnimeDuration: String, Codable, Sendable {
     /// API версия: "S"
-    case lessThan10Minutes
+    case lessThan10Minutes = "S"
     /// API версия: "D"
-    case lessThan30Minutes
+    case lessThan30Minutes = "D"
     /// API версия: "F"
-    case moreThan30Hour
-
-    enum CodingKeys: String, CodingKey {
-        case lessThan10Minutes = "S"
-        case lessThan30Minutes = "D"
-        case moreThan30Hour = "F"
-    }
-
+    case moreThan30Hour = "F"
 }

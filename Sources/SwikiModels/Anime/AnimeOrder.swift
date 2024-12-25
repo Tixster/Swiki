@@ -3,7 +3,7 @@ import Foundation
 public enum SwikiAnimeOrder: String, Codable, Sendable {
     /// By ID
     case id
-    case idDesc
+    case idDesc = "id_desc"
     /// By rank
     case ranked
     /// By type
@@ -13,7 +13,7 @@ public enum SwikiAnimeOrder: String, Codable, Sendable {
     /// In alphabetical order
     case name
     /// By release date
-    case airedOn
+    case airedOn = "aired_on"
     /// By number of episodes
     case episodes
     /// By status
@@ -21,27 +21,9 @@ public enum SwikiAnimeOrder: String, Codable, Sendable {
     /// By random
     case random
     /// By random
-    case rankedRandom
+    case rankedRandom = "ranked_random"
     /// By Shikimori ranking
-    case rankedShiki
-    case createdAt
-    case createdAtDesc
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case idDesc = "id_desc"
-        case ranked
-        case kind
-        case popularity
-        case name
-        case airedOn = "aired_on"
-        case episodes
-        case status
-        case random
-        case rankedRandom = "ranked_random"
-        case rankedShiki = "ranked_shiki"
-        case createdAt = "created_at"
-        case createdAtDesc = "created_at_desc"
-    }
-
+    case rankedShiki = "ranked_shiki"
+    case createdAt = "created_at"
+    case createdAtDesc = "created_at_desc"
 }

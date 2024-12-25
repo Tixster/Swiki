@@ -1,6 +1,6 @@
 import Foundation
 
-public enum SwikiUserRateTargetType: String, Decodable, Sendable {
+public enum SwikiGenreType: String, Decodable, Sendable {
     case anime = "Anime"
     case manga = "Manga"
 }
