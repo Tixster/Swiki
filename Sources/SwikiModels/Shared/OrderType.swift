@@ -1,6 +1,6 @@
 import Foundation
 
-public enum SwikiOrderType: String, Codable, Sendable {
+public enum SwikiSortOrderType: String, Codable, Sendable {
     /// Сортировать по возрастанию
     case asc
     /// Сортировать по убыванию

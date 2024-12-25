@@ -1,6 +1,6 @@
 import Foundation
 
-public enum SwikiGenreType: String, Decodable, Sendable {
+public enum SwikiGenreEntryType: String, Decodable, Sendable {
     case anime = "Anime"
     case manga = "Manga"
 }

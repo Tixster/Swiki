@@ -1,6 +1,6 @@
 import Foundation
 
-public enum SwikiAnimeOrder: String, Codable, Sendable {
+public enum SwikiOrder: String, Codable, Sendable {
     /// By ID
     case id
     case idDesc = "id_desc"

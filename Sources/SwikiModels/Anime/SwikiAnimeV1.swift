@@ -1,7 +1,8 @@
 import Foundation
 
-public struct SwikiAnime: Decodable, Sendable {
-    public let id: String
+/// RestV1
+public struct SwikiAnimeV1: Decodable, Sendable {
+    public let id: Int
     public let name: String
     public let russian: String
     public let image: SwikiImage
@@ -11,13 +12,14 @@ public struct SwikiAnime: Decodable, Sendable {
     public let status: SwikiAnimeStatus
     public let episodes: Int
     public let episodesAired: Int
-    public let airedOn: String?
-    public let releasedOn: String?
+    public let airedOn: Date?
+    public let releasedOn: Date?
     public let rating: SwikiAnimeRating
     public let english: [String]
     public let japanese: [String]
     public let synonims: [String]
     public let licenseNameRu: String?
+    /// Продолжительность в минутах
     public let duration: Int
     public let description: String?
     public let descriptionHtml: String?
@@ -26,8 +28,8 @@ public struct SwikiAnime: Decodable, Sendable {
     public let favoured: Bool
     public let anons: Bool
     public let ongoing: Bool
-    public let threadId: String
-    public let topicId: String
+    public let threadId: Int
+    public let topicId: Int
     public let myAnimeListId: String
     public let ratesScoresStats: [SwikiRateScore]
     public let ratesStatusesStats: [SwikiRateStatus]
@@ -41,7 +43,7 @@ public struct SwikiAnime: Decodable, Sendable {
     public let videos: [SwikiVideo]
     public let screenshots: [SwikiImage]
 
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeysRest: String, CodingKey {
         case id
         case name
         case russian
@@ -61,8 +63,8 @@ public struct SwikiAnime: Decodable, Sendable {
         case licenseNameRu = "license_name_ru"
         case duration
         case description
-        case descriptionHtml = "description_html"
-        case descriptionSource = "description_source"
+        case descriptionHtml
+        case descriptionSource
         case franchise
         case favoured
         case anons
@@ -84,8 +86,8 @@ public struct SwikiAnime: Decodable, Sendable {
     }
 
     public init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decodeStringOrInt(forKey: .id)
+        let container = try decoder.container(keyedBy: CodingKeysRest.self)
+        self.id = try container.decode(Int.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.russian = try container.decode(String.self, forKey: .russian)
         self.image = try container.decode(SwikiImage.self, forKey: .image)
@@ -95,8 +97,12 @@ public struct SwikiAnime: Decodable, Sendable {
         self.status = try container.decode(SwikiAnimeStatus.self, forKey: .status)
         self.episodes = try container.decode(Int.self, forKey: .episodes)
         self.episodesAired = try container.decode(Int.self, forKey: .episodesAired)
-        self.airedOn = try container.decodeIfPresent(String.self, forKey: .airedOn)
-        self.releasedOn = try container.decodeIfPresent(String.self, forKey: .releasedOn)
+        self.airedOn = if let airedOnStr = try container.decodeIfPresent(String.self, forKey: .airedOn) {
+            DateFormatter.yyyyMMdd.date(from: airedOnStr)
+        } else { nil }
+        self.releasedOn = if let releasedOnStr = try container.decodeIfPresent(String.self, forKey: .releasedOn) {
+            DateFormatter.yyyyMMdd.date(from: releasedOnStr)
+        } else { nil }
         self.rating = try container.decode(SwikiAnimeRating.self, forKey: .rating)
         self.english = try container.decode([String].self, forKey: .english)
         self.japanese = try container.decode([String].self, forKey: .japanese)
@@ -110,8 +116,8 @@ public struct SwikiAnime: Decodable, Sendable {
         self.favoured = try container.decode(Bool.self, forKey: .favoured)
         self.anons = try container.decode(Bool.self, forKey: .anons)
         self.ongoing = try container.decode(Bool.self, forKey: .ongoing)
-        self.threadId = try container.decodeStringOrInt(forKey: .threadId)
-        self.topicId = try container.decodeStringOrInt(forKey: .topicId)
+        self.threadId = try container.decode(Int.self, forKey: .threadId)
+        self.topicId = try container.decode(Int.self, forKey: .topicId)
         self.myAnimeListId = try container.decodeStringOrInt(forKey: .myAnimeListId)
         self.ratesScoresStats = try container.decode([SwikiRateScore].self, forKey: .ratesScoresStats)
         self.ratesStatusesStats = try container.decode([SwikiRateStatus].self, forKey: .ratesStatusesStats)

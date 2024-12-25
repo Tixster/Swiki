@@ -4,8 +4,8 @@ public struct SwikiGenre: Decodable, Sendable {
     public let id: String
     public let name: String
     public let russian: String
-    public let kind: String
-    public let entryType: SwikiGenreType
+    public let kind: SwikiGenreKind
+    public let entryType: SwikiGenreEntryType
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -20,8 +20,8 @@ public struct SwikiGenre: Decodable, Sendable {
         self.id = try container.decodeStringOrInt(forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.russian = try container.decode(String.self, forKey: .russian)
-        self.kind = try container.decode(String.self, forKey: .kind)
-        self.entryType = try container.decode(SwikiGenreType.self, forKey: .entryType)
+        self.kind = try container.decode(SwikiGenreKind.self, forKey: .kind)
+        self.entryType = try container.decode(SwikiGenreEntryType.self, forKey: .entryType)
     }
 
 }
