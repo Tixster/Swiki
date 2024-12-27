@@ -1,5 +1,9 @@
 import Foundation
 
+/**
+ - warning: Поле ``hosting``
+ может иметь значение только через API V1
+ */
 public struct SwikiVideo: Decodable, Sendable {
     public let id: Int
     public let url: URL

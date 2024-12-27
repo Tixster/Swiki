@@ -1,7 +1,6 @@
 import Foundation
 
-/// GraphQl-модель
-public struct SwikiAnime: SwikiTitle {
+public struct SwikiManga: SwikiTitle {
     public let id: String
     public let malId: String?
     public let name: String
@@ -10,33 +9,26 @@ public struct SwikiAnime: SwikiTitle {
     public let english: String?
     public let japanese: String?
     public let synonims: [String]
-    public let kind: SwikiAnimeKind
-    public let rating: SwikiAnimeRating
+    public let kind: SwikiMangaKind
     public let score: Float?
-    public let status: SwikiAnimeStatus
-    public let episodes: Int
-    public let episodesAired: Int
-    /// Продолжительность в минутах
-    public let duration: Int?
+    public let chapters: Int
+    public let volumes: Int
+    public let status: SwikiMangaStatus
     public let airedOn: SwikiIncompleteDate?
     public let releasedOn: SwikiIncompleteDate?
     public let url: URL
-    public let season: String?
     public let poster: SwikiPoster
-    public let fansubbers: [String]
-    public let fandubbers: [String]
     public let licensors: [String]
     public let createdAt: Date
     public let updatedAt: Date
     public let nextEpisodeAt: Date?
     public let isCensored: Bool?
     public let genres: [SwikiGenre]?
-    public let studios: [SwikiStudio]
     public let externalLinks: [SwikiExternalLink]?
     public let personRoles: [SwikiPersonRole]?
     public let characterRoles: [SwikiCharacterRole]?
     public let franchise: String?
-    public let chronology: [SwikiAnime]?
+    public let chronology: [SwikiManga]?
     public let description: String?
     public let descriptionHtml: String?
     public let descriptionSource: String?
