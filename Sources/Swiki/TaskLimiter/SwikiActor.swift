@@ -13,9 +13,7 @@ struct SwikiActor {
 }
 
 fileprivate struct SubmittedJob<T: Sendable>: Sendable {
-    /// Собственно работа (асинхронная, бросающая).
     let work: @Sendable () async throws -> T
-    /// Continuation, через который вернём результат или ошибку.
     let continuation: CheckedContinuation<T, any Error>
 }
 

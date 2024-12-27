@@ -1,6 +1,6 @@
 import Foundation
 
-public enum SwikiExternalLink: String, Decodable, Sendable {
+public enum SwikiExternalLinkKind: String, Decodable, Sendable {
     case officialSite = "official_site"
     case wikipedia
     case animeNewsNetwork = "anime_news_network"

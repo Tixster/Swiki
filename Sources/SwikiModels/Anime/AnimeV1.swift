@@ -30,7 +30,7 @@ public struct SwikiAnimeV1: Decodable, Sendable {
     public let ongoing: Bool
     public let threadId: Int
     public let topicId: Int
-    public let myAnimeListId: String
+    public let myAnimeListId: Int
     public let ratesScoresStats: [SwikiRateScore]
     public let ratesStatusesStats: [SwikiRateStatus]
     public let updatedAt: Date
@@ -118,7 +118,7 @@ public struct SwikiAnimeV1: Decodable, Sendable {
         self.ongoing = try container.decode(Bool.self, forKey: .ongoing)
         self.threadId = try container.decode(Int.self, forKey: .threadId)
         self.topicId = try container.decode(Int.self, forKey: .topicId)
-        self.myAnimeListId = try container.decodeStringOrInt(forKey: .myAnimeListId)
+        self.myAnimeListId = try container.decode(Int.self, forKey: .topicId)
         self.ratesScoresStats = try container.decode([SwikiRateScore].self, forKey: .ratesScoresStats)
         self.ratesStatusesStats = try container.decode([SwikiRateStatus].self, forKey: .ratesStatusesStats)
         self.updatedAt = try container.decode(Date.self, forKey: .updatedAt)

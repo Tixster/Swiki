@@ -1,6 +1,6 @@
 import Foundation
 
-public struct SwikiDate: Decodable, Sendable {
+public struct SwikiIncompleteDate: Decodable, Sendable {
     public let year: Int?
     public let month: Int?
     public let day: Int?

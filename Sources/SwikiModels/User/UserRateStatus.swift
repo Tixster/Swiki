@@ -1,6 +1,6 @@
 import Foundation
 
-public enum UserRateStatus: String, Encodable, Sendable {
+public enum SwikiUserRateStatus: String, Codable, Sendable {
     /// Planned to Watch
     case planned
     /// Watching
